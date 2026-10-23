@@ -43,12 +43,3 @@ The Raspberry Pi is connected to the home network through the home router. Clien
 Remote connectivity is provided through Tailscale, allowing authorized devices to connect to the HomeLab without treating the services as automatically exposed to the public Internet.
 
 The network topology is documented separately in the `diagrams/` directory.
-
-## Future Improvements
-
-- Document the Docker deployment and container configuration.
-- Document service dependencies, ports, and network connectivity.
-- Define and document backup and recovery procedures.
-- Review container updates, permissions, and security settings.
-- Improve monitoring and troubleshooting documentation.
-
