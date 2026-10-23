@@ -2,30 +2,34 @@
 
 ## Overview
 
-Pi-hole is a network-level DNS filtering service running in my Raspberry Pi 4 HomeLab. It helps block requests to known advertising, tracking, and unwanted domains before connections are established.
+Pi-hole is a network-level DNS filtering service running on my Raspberry Pi 4 HomeLab. It helps block requests to known advertising, tracking, and unwanted domains before connections are established.
 
 ## Purpose
 
 The main goals of using Pi-hole are:
 
 - **DNS filtering:** Blocks domains included in configured blocklists.
-- **Network-wide filtering:** Can filter DNS requests from devices configured to use Pi-hole.
+- **Network-wide filtering:** Allows devices on the home network to use Pi-hole for DNS resolution.
 - **Centralized management:** Provides a web interface to monitor DNS activity and manage filtering settings.
 
 ## Deployment
 
-Pi-hole runs as part of my HomeLab infrastructure. Docker Compose is used to manage containerized services.
+Pi-hole runs as part of my HomeLab infrastructure on a Raspberry Pi 4 running Raspberry Pi OS Lite. Docker Compose is used to manage containerized services.
 
-The service is hosted on a Raspberry Pi 4 running Raspberry Pi OS Lite.
+## Network Integration
+
+Pi-hole is configured as the DNS server on the home router. Devices that receive this DNS configuration from the router can use Pi-hole automatically, without requiring individual DNS configuration.
+
+DNS requests are filtered according to Pi-hole's configured blocklists and settings. Devices using a different DNS server may bypass this filtering.
 
 ## Access and Management
 
-Pi-hole provides a web-based administration interface where DNS queries, blocked requests, and filtering lists can be managed.
+Pi-hole provides a web-based administration interface for monitoring DNS queries, reviewing blocked requests, and managing filtering lists.
 
-Its filtering applies to clients that send their DNS requests through Pi-hole. It does not automatically filter every device on the network unless those devices are configured to use it.
+The administration interface should only be accessible to authorized users.
 
 ## Security Considerations
 
-- The administration interface should only be accessible to authorized users.
-- DNS access should be configured carefully to avoid exposing the service unnecessarily.
-- Configuration files and credentials must not contain publicly shared secrets.
+- Avoid exposing the DNS service or administration interface directly to the public Internet.
+- Keep Pi-hole and its blocklists reasonably up to date.
+- Never publish passwords, authentication tokens, or other sensitive configuration details.
